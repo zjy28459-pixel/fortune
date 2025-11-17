@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>在线占卜</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 40px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>今日占卜</h1>
+    <button onclick="fortune()">开始占卜</button>
+    <div id="result"></div>
+
+    <script>
+        function fortune() {
+            const list = [
+                "大吉 🌟 今天会遇到好事！",
+                "中吉 ✨ 有一点好运在向你靠近。",
+                "小吉 😊 小小的顺利。",
+                "凶 😶 今天要谨慎一点哦。",
+                "大凶 💀 出门记得看黄历…（开玩笑）"
+            ];
+            const ans = list[Math.floor(Math.random() * list.length)];
+            document.getElementById("result").innerText = ans;
+        }
+    </script>
+</body>
+
+</html>
