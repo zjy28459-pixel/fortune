@@ -3,12 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>在线占卜</title>
+    <title>答案之书</title>
     <style>
         body {
             font-family: sans-serif;
             text-align: center;
-            margin-top: 150px;
+            margin-top: 120px;
+        }
+
+        input {
+            padding: 10px;
+            width: 260px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid gray;
         }
 
         button {
@@ -16,31 +24,64 @@
             font-size: 18px;
             border-radius: 10px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         #result {
             margin-top: 40px;
             font-size: 24px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
     </style>
 </head>
 
 <body>
-    <h1>今日占卜</h1>
-    <button onclick="fortune()">开始占卜</button>
+    <h1>答案之书</h1>
+
+    <p>先告诉我你想问的问题：</p>
+
+    <input id="question" type="text" placeholder="例如：我今天会顺利吗？">
+    <br>
+    <button onclick="fortune()">翻开答案</button>
+
     <div id="result"></div>
 
     <script>
         function fortune() {
+            const q = document.getElementById("question").value.trim();
+            const resultBox = document.getElementById("result");
+
+            if (q === "") {
+                resultBox.innerText = "先告诉我你的问题，我才能帮你找到答案。";
+                return;
+            }
+
+            // 温柔积极的答案之书句子
             const list = [
-                "大吉 🌟 今天会遇到好事！",
-                "中吉 ✨ 有一点好运在向你靠近。",
-                "小吉 😊 小小的顺利。",
-                "凶 😶 今天要谨慎一点哦。",
-                "大凶 💀 出门记得看黄历…（开玩笑）"
+                "事情可能没有你想的那样糟，你会慢慢找到出口。",
+                "放松一点，你已经在变好途中。",
+                "相信自己，你比你意识到的更强大。",
+                "再坚持一下，会出现好消息的。",
+                "你的努力正在被悄悄看到。",
+                "你正在朝着更好的方向前进。",
+                "别担心，答案会比你预期更温柔。",
+                "你值得被世界善待，好事会来的。",
+                "现在的迷茫，是为了将来更清晰的方向。",
+                "你已经做得很好了，继续走下去就行。",
+                "事情可能曲折，但最终会落到你希望的地方。",
+                "慢慢来，一切都在朝你想要的方向倾斜。",
+                "你并不孤单，你会得到支持的。",
+                "你的心意会被理解，不用害怕。",
+                "你会得到你应得的安稳与快乐。"
             ];
+
             const ans = list[Math.floor(Math.random() * list.length)];
-            document.getElementById("result").innerText = ans;
+
+            resultBox.innerHTML =
+                `<strong>你问：</strong> ${q}<br><br><strong>答案之书翻到的页是：</strong><br>${ans}`;
         }
     </script>
 </body>
